@@ -11,8 +11,10 @@ function character.new(ID, controller, maxLife)
 	new.shape = love.physics.newRectangleShape(80,80)
 	new.fix = love.physics.newFixture(new.body, new.shape)
 end
-function character:update()
-	x,y = self.controller.getAxis()
+function character:update(dt)
+	ax, ay, _, ax2, ay2 = self.controller.getAxes()
+	self.body:applyForce(ax*dt, ay*dt)
+	
 end
 function character:draw()
 

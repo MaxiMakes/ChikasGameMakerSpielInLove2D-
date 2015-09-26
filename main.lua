@@ -13,6 +13,9 @@ function love.load()
 end
 function love.update(dt)
 	world:update(dt)
+	for i, v in ipairs(char) do 
+		v:update(dt)
+	end
 
 end
 
