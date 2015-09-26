@@ -7,6 +7,13 @@ function character.new(ID, controller, canvasSize,maxLife)
 		ax, ay, _, ax2, ay2 = self.controller:getAxes()
 		--print(ax, ay)
 		self.body:setLinearVelocity(ax*character.speed, ay*character.speed)
+
+		if self.controller:isGamepadDown("rightshoulder") == true then
+			i = i + 1
+			owner = self.ID
+			a1 = arrow.new(i, owner)
+			a1.body:setLinearVelocity(ax2*arrow.speed, ay2*arrow.speed)
+		end
 	
 	end
 	function new:draw()
