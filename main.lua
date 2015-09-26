@@ -7,11 +7,12 @@ function love.load()
 
 	joyL = joysticks.load()
 	for  i, v in ipairs(joyL) do
-		//ID, Controller, maxLife, 	
+		--ID, Controller, maxLife, 	
 		char[i] = character.new(i, joyL[i])
 	end
 end
 function love.update(dt)
+	world:update(dt)
 
 end
 
