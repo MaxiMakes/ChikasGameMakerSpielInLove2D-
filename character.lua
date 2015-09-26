@@ -4,10 +4,10 @@ function character.new(ID, controller, maxLife)
 	new = {}
 	new.ID = ID
 	new.controller = controller
-	if maxLife = nil then maxLife == 100 end
+	if maxLife == nil then maxLife = 100 end
 	new.maxLife = maxLife
 	new.life = maxLife
-	new.body = love.physics.newBody(50, 51, "dynamic")
+	new.body = love.physics.newBody(world, 50, 51, "dynamic")
 	new.shape = love.physics.newRectangleShape(80,80)
 	new.fix = love.physics.newFixture(new.body, new.shape)
 end
@@ -19,7 +19,6 @@ function character:draw()
 end
 
 return character
-
 
 
 
