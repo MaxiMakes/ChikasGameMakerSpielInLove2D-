@@ -4,15 +4,17 @@ function character.new(ID, controller, maxLife)
 	new = {}
 	new.ID = ID
 	new.controller = controller
-	if maxLife = nil then maxLife = 100 end
+	if maxLife == nil then maxLife = 100 end
 	new.maxLife = maxLife
 	new.life = maxLife
 	new.body = love.physics.newBody(50, 51, "dynamic")
 	new.shape = love.physics.newRectangleShape(80,80)
 	new.fix = love.physics.newFixture(new.body, new.shape)
 end
-function character:update()
-	x,y = self.controller.getAxis()
+function character:update(dt)
+	ax, ay, _, ax2, ay2 = self.controller.getAxes()
+	self.body:applyForce(ax*dt, ay*dt)
+	
 end
 function character:draw()
 
