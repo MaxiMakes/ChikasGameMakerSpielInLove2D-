@@ -17,7 +17,7 @@ function character:update(dt)
 	
 end
 function character:draw()
-
+	love.graphics.polygon("fill", objects.ground.body:getWorldPoints(objects.ground.shape:getPoints()))
 end
 
 return character
