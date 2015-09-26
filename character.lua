@@ -1,7 +1,18 @@
 character = {}
+character.speed = 300
 local mt = {__index = character}
 function character.new(ID, controller, maxLife) 
 	new = {}
+	function new:update(dt)
+		ax, ay, _, ax2, ay2 = self.controller:getAxes()
+		--print(ax, ay)
+		self.body:setLinearVelocity(ax*character.speed, ay*character.speed)
+	
+	end
+	function new:draw()
+		love.graphics.polygon("fill", self.body:getWorldPoints(self.shape:getPoints()))
+		love.graphics.setColor(0, 255, 0)
+	end
 	new.ID = ID
 	new.controller = controller
 	if maxLife == nil then maxLife = 100 end
@@ -9,18 +20,10 @@ function character.new(ID, controller, maxLife)
 	new.life = maxLife
 	new.body = love.physics.newBody(world, 50, 51, "dynamic")
 	new.shape = love.physics.newRectangleShape(80,80)
-	new.fix = love.physics.newFixture(new.body, new.shape)
+	new.fix = love.physics.newFixture(new.body, new.shape, 1)
 	return new
 end
-function character:update(dt)
-	ax, ay, _, ax2, ay2 = self.controller.getAxes()
-	self.body:applyForce(ax*dt, ay*dt)
-	
-end
-function character:draw()
-	love.graphics.polygon("fill", objects.ground.body:getWorldPoints(objects.ground.shape:getPoints()))
-	love.graphics.setColor(0, 255, 0)
-end
+
 
 return character
 

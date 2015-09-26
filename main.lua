@@ -4,8 +4,10 @@ char = {}
 function love.load()
 	love.physics.setMeter(64) 
 	world = love.physics.newWorld(0, 0, true)
-
-	joyL = joysticks.load()
+	
+	joyL = love.joystick.getJoysticks()
+	print(love.joystick.getJoysticks( )[1])
+	--joyL = joysticks.load()
 	for  i, v in ipairs(joyL) do
 		--ID, Controller, maxLife, 	
 		char[i] = character.new(i, joyL[i])
