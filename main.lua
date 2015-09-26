@@ -6,12 +6,28 @@ function love.load()
 	world = love.physics.newWorld(0, 0, true)
 	
 	joyL = love.joystick.getJoysticks()
-	print(love.joystick.getJoysticks( )[1])
-	--joyL = joysticks.load()
+	--creating splittscreen 
+	width = love.graphics.getWidth( )
+	height = love.graphics.getHeight( )
+	screenSize = {}
+	if math.sqrt(joyL#) == math.floor(math.sqrt(joyL#) then
+		--divide height and width with math.sqrt(char#) 
+		screenSize.height = height/math.sqrt(joyL#)
+		screenSize.width = width/math.sqrt(joyL#)	
+
+	end
+	if math.sqrt(joyL#) ~= math.floor(math.sqrt(joyL#) then
+		--divide height by math.floor(math.sqrt(char#)) and width by char#/math.floor(math.sqrt(char#)) 
+		screenSize.height = height/math.floor(math.sqrt(joyL#))
+		screenSize.width = width/joyL#/math.floor(math.sqrt(joyL#)
+	end
 	for  i, v in ipairs(joyL) do
 		--ID, Controller, maxLife, 	
-		char[i] = character.new(i, joyL[i])
+		char[i] = character.new(i, joyL[i], screenSize)
 	end
+	
+
+
 end
 function love.update(dt)
 	world:update(dt)

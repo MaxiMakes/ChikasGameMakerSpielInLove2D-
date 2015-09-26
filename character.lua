@@ -1,7 +1,7 @@
 character = {}
 character.speed = 300
 local mt = {__index = character}
-function character.new(ID, controller, maxLife) 
+function character.new(ID, controller, canvasSize,maxLife) 
 	new = {}
 	function new:update(dt)
 		ax, ay, _, ax2, ay2 = self.controller:getAxes()
@@ -15,6 +15,7 @@ function character.new(ID, controller, maxLife)
 	end
 	new.ID = ID
 	new.controller = controller
+	new.canvas = love.graphics.newCanvas(canvasSize.width, canvasSize.height )
 	if maxLife == nil then maxLife = 100 end
 	new.maxLife = maxLife
 	new.life = maxLife
