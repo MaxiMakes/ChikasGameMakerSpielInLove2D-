@@ -19,6 +19,7 @@ function character:update(dt)
 end
 function character:draw()
 	love.graphics.polygon("fill", objects.ground.body:getWorldPoints(objects.ground.shape:getPoints()))
+	love.graphics.setColor(0, 255, 0)
 end
 
 return character
