@@ -10,12 +10,18 @@ function character.new(ID, controller, canvasSize,maxLife)
 	
 	end
 	function new:draw()
-		love.graphics.polygon("fill", self.body:getWorldPoints(self.shape:getPoints()))
-		love.graphics.setColor(0, 255, 0)
+		love.graphics.setCanvas(self.canvas)
+			self.canvas:clear()
+			love.graphics.setColor(0, 255, 0)
+			love.graphics.push()
+			love.graphics.translate(self.body:getX(), self.body:getY())
+			love.graphics.polygon("fill", self.body:getWorldPoints(self.shape:getPoints()))
+			love.graphics.pop()
+		love.graphics.setCanvas()
 	end
 	new.ID = ID
 	new.controller = controller
-	new.canvas = love.graphics.newCanvas(canvasSize.width, canvasSize.height )
+	new.canvas = love.graphics.newCanvas(canvasSize.width, canvasSize.height)
 	if maxLife == nil then maxLife = 100 end
 	new.maxLife = maxLife
 	new.life = maxLife
