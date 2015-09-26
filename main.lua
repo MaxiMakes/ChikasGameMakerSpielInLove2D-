@@ -21,6 +21,8 @@ end
 
 
 function love.draw()
-
+	for i, v in ipairs(char) do 
+		v:draw(dt)
+	end
 
 end

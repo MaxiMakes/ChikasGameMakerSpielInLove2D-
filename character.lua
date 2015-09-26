@@ -1,5 +1,5 @@
 character = {}
-
+local mt = {__index = character}
 function character.new(ID, controller, maxLife) 
 	new = {}
 	new.ID = ID
@@ -10,6 +10,7 @@ function character.new(ID, controller, maxLife)
 	new.body = love.physics.newBody(50, 51, "dynamic")
 	new.shape = love.physics.newRectangleShape(80,80)
 	new.fix = love.physics.newFixture(new.body, new.shape)
+	return new
 end
 function character:update(dt)
 	ax, ay, _, ax2, ay2 = self.controller.getAxes()
