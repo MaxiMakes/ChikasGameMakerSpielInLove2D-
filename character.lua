@@ -7,7 +7,7 @@ function character.new(ID, controller, maxLife)
 	if maxLife == nil then maxLife = 100 end
 	new.maxLife = maxLife
 	new.life = maxLife
-	new.body = love.physics.newBody(50, 51, "dynamic")
+	new.body = love.physics.newBody(world, 50, 51, "dynamic")
 	new.shape = love.physics.newRectangleShape(80,80)
 	new.fix = love.physics.newFixture(new.body, new.shape)
 	return new
@@ -18,11 +18,10 @@ function character:update(dt)
 	
 end
 function character:draw()
-
+	love.graphics.polygon("fill", objects.ground.body:getWorldPoints(objects.ground.shape:getPoints()))
 end
 
 return character
-
 
 
 
